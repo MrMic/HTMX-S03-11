@@ -4,8 +4,8 @@ export default function renderLocation(location) {
       <button 
         hx-post="/places" 
         hx-vals='{"locationId": "${location.id}"}'  
-        hx-target="#available-locations" 
-        hx-swap="outerHTML"
+        hx-target="#interesting-locations" 
+        hx-swap="beforeend"
       >
         <img src="${`/images/${location.image.src}`}" alt="${location.image.alt}" />
         <h3>${location.title}</h3>

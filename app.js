@@ -25,9 +25,7 @@ app.post("/places", (req, res) => {
   const location = AVAILABLE_LOCATIONS.find((loc) => loc.id === locationId);
   INTERESTING_LOCATIONS.push(location);
 
-  res.send(`
-    TODO
-  `);
+  res.send(renderLocation(location));
 });
 
 // ______________________________________________________________________
