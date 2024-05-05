@@ -11,7 +11,7 @@ const INTERESTING_LOCATIONS = [];
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
-// ______________________________________________________________________
+// NOTE: ______________________________________________________________________
 app.get("/", (req, res) => {
   const availableLocations = AVAILABLE_LOCATIONS.filter(
     (location) => !INTERESTING_LOCATIONS.includes(location),
@@ -19,16 +19,26 @@ app.get("/", (req, res) => {
   res.send(renderLocationsPage(availableLocations, INTERESTING_LOCATIONS));
 });
 
-// ______________________________________________________________________
+// NOTE: ______________________________________________________________________
 app.post("/places", (req, res) => {
   const locationId = req.body.locationId;
   const location = AVAILABLE_LOCATIONS.find((loc) => loc.id === locationId);
   INTERESTING_LOCATIONS.push(location);
 
-  res.send(renderLocation(location, false));
+  const availableLocations = AVAILABLE_LOCATIONS.filter(
+    (location) => !INTERESTING_LOCATIONS.includes(location),
+  );
+
+  res.send(`
+    ${renderLocation(location, false)}
+
+    <ul id="available-locations" class="locations" hx-swap-oob="true">
+      ${availableLocations.map((location) => renderLocation(location)).join("")}
+    </ul>
+    `);
 });
 
-// ______________________________________________________________________
+// NOTE: ______________________________________________________________________
 app.delete("/places/:id", (req, res) => {
   const locationId = req.params.id;
   const locationIndex = INTERESTING_LOCATIONS.findIndex(
