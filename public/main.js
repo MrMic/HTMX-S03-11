@@ -1,8 +1,8 @@
-function showConfirmationFunction(event) {
-event.preventDefault();
-console.log("🪚 event:", event);
+function showConfirmationFunction( event ) {
+  event.preventDefault();
+  console.log( "🪚 event:", event );
 
-const confirmationModal = `
+  const confirmationModal = `
     <dialog class="modal">
       <div id="confirmation">
         <h2>Are you sure?</h2>
@@ -19,10 +19,10 @@ const confirmationModal = `
     </dialog>
   `;
 
-document.body.insertAdjacentHTML("beforeend", confirmationModal);
+  document.body.insertAdjacentHTML( "beforeend", confirmationModal );
 
-const dialog = document.querySelector("dialog");
-dialog.showModal();
+  const dialog = document.querySelector( "dialog" );
+  dialog.showModal();
 }
 
-document.addEventListener("htmx:beforeRequest", showConfirmationFunction);
+document.addEventListener( "htmx:beforeRequest", showConfirmationFunction );
