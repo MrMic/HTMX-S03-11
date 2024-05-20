@@ -1,4 +1,4 @@
-function showConfirmationFunction(event) {
+function showConfirmationModal(event) {
   event.preventDefault();
   console.log("🪚 event:", event);
   const action = event.detail.elt.dataset.action;
@@ -22,7 +22,14 @@ function showConfirmationFunction(event) {
   document.body.insertAdjacentHTML("beforeend", confirmationModal);
 
   const dialog = document.querySelector("dialog");
+
+  const noBtn = document.getElementById("action-no");
+  noBtn.addEventListener("click", () => {
+    dialog.remove();
+  });
+
   dialog.showModal();
+
 }
 
-document.addEventListener("htmx:beforeRequest", showConfirmationFunction);
+document.addEventListener("htmx:beforeRequest", showConfirmationModal);
