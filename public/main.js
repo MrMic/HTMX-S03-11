@@ -28,8 +28,14 @@ function showConfirmationModal(event) {
     dialog.remove();
   });
 
+  const yesBtn = document.getElementById("action-yes");
+  yesBtn.addEventListener("click", () => {
+    event.detail.issueRequest();
+    dialog.remove();
+  });
+
   dialog.showModal();
 
 }
 
-document.addEventListener("htmx:beforeRequest", showConfirmationModal);
+document.addEventListener("htmx:confirm", showConfirmationModal);
