@@ -28,7 +28,11 @@ export default function renderLocationsPage(
         <main>
           <section id="suggested-location-section" class="locations-category">
             <h2>Currently Suggested</h2>
-            <ul class="locations" id="suggested-locations">
+            <ul 
+              class="locations" 
+              id="suggested-locations" 
+              hx-get="/suggested-locations"
+            >
               ${suggestedLocations.map((location) => renderLocation(location)).join("")}
             </ul>
           </section>
