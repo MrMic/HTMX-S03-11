@@ -1,4 +1,9 @@
 function showConfirmationModal(event) {
+  // * NOTE: Do NOT show Confirmation Dialog for suggested Locations ___
+  if (event.detail.path === "/suggested-locations") {
+    return;
+  }
+
   event.preventDefault();
   console.log("🪚 event:", event);
   const action = event.detail.elt.dataset.action;

@@ -60,13 +60,21 @@ app.post("/places", (req, res) => {
     ${renderLocation(location, false)}
 
 
-    <ul class="locations" id="suggested-locations" hx-swap-oob="true" >
+    <ul class="locations" id="suggested-locations" hx-swap-oob="innerHTML" >
       ${suggestedLocations.map((location) => renderLocation(location)).join("")}
     </ul>
 
     <ul id="available-locations" class="locations" hx-swap-oob="true">
       ${availableLocations.map((location) => renderLocation(location)).join("")}
     </ul>
+    `);
+});
+
+// NOTE: ______________________________________________________________________
+app.get("/suggested-locations", (req, res) => {
+  const suggestedLocations = getSuggestedLocations();
+  res.send(`
+      ${suggestedLocations.map((location) => renderLocation(location)).join("")}
     `);
 });
 
