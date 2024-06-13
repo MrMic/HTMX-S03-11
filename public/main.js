@@ -1,3 +1,6 @@
+// htmx.config.defaultSwapStyle = "outerHTML";
+console.log(htmx);
+
 function showConfirmationModal(event) {
   // * NOTE: Do NOT show Confirmation Dialog for suggested Locations ___
   if (event.detail.path === "/suggested-locations") {

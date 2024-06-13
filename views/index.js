@@ -12,6 +12,7 @@ export default function renderLocationsPage(
         <title>Interesting Locations</title>
         <link rel="stylesheet" href="/main.css" />
         <link rel="icon" href="/logo.png" />
+        <!-- <meta name="htmx-config" content='{"defaultSwapStyle": "outerHTML"}'> -->
         <script src="/htmx.js" defer></script>
         <!-- Show Modal -->
         <script src="/main.js" defer></script>
