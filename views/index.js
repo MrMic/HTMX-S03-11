@@ -14,10 +14,11 @@ export default function renderLocationsPage(
         <link rel="icon" href="/logo.png" />
         <!-- <meta name="htmx-config" content='{"defaultSwapStyle": "outerHTML"}'> -->
         <script src="/htmx.js" defer></script>
+        <script src="/htmx-ext-debug.js" defer></script>
         <!-- Show Modal -->
         <script src="/main.js" defer></script>
       </head>
-      <body>
+      <body hx-ext="debug">
         <header>
           <img src="/logo.png" alt="Stylized globe" />
           <h1>PlacePicker</h1>
